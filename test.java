@@ -6,18 +6,26 @@ TASK: test
 import java.io.*;
 import java.util.*;
 
+class Support {
+    int temp;
+    String name;
+}
+
 class test {
   public static void main (String [] args) throws IOException {
-    // Use BufferedReader rather than RandomAccessFile; it's much faster
     Scanner f = new Scanner(new FileReader("test.in"));
-                                                  // input file name goes above
+    ArrayDeque<Integer> test = new ArrayDeque<Integer>();
+    Support mine = new Support(); 
+    mine.temp = 33;
+    mine.name = "BOBB";
     PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("test.out")));
-    // Use StringTokenizer vs. readLine/split -- lots faster
-						  // Get line, break into tokens
-    int i1 = f.nextInt();    // first integer
-    int i2 = f.nextInt();    // second integer
-    out.println(i1+i2);                           // output result
-    out.close();                                  // close the output file
-    System.exit(0);                               // don't omit this!
+    int i1 = f.nextInt();
+    test.add(i1);
+    int i2 = f.nextInt();
+    test.add(i2);
+    int result = i1 + i2;
+    out.println(result);
+    out.close();
+    System.exit(0);
   }
 }
